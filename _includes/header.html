@@ -84,6 +84,12 @@
                 </div>
               </li> -->
               {%- else %}
+              {%- if p.title == "cv" %}
+              <li class="nav-item {% if page.title == p.title %}active{% endif %}">
+                <a class="nav-link" href="{{ p.cv_pdf | prepend: 'assets/pdf/' | relative_url}}"  rel="noopener noreferrer">{{ p.title }}
+                </a>
+              </li>
+              {%- else %}
               <li class="nav-item {% if page.title == p.title %}active{% endif %}">
                 <a class="nav-link" href="{{ p.url | relative_url }}">{{ p.title }}
                   {%- if page.title == p.title -%}
@@ -93,9 +99,10 @@
               </li>
               {%- endif -%}
               {%- endif -%}
+              {%- endif -%}
               {% endfor -%}
               {%- if site.enable_darkmode %}
-
+              
               <!-- Toogle theme mode -->
               <li class="toggle-container">
                 <button id="light-toggle" title="Change theme">
