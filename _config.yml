@@ -164,7 +164,7 @@ plugins:
   - jekyll-target-blank
   - jekyll-twitter-plugin
   - jemoji
-
+  - jekyll-gallery-generator
 # Sitemap settings
 defaults:
   - scope:
@@ -313,3 +313,16 @@ mdb:
 medium_zoom:
   version: "1.0.6"
   integrity: "sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM="
+
+gallery:
+  dir: "gallery"   # Path to the gallery
+  symlink: false            # false: copy images into _site. true: create symbolic links (saves disk space)
+  title: "Gallery"          # Title for gallery index page
+  title_prefix: "Gallery: " # Title prefix for gallery pages. Gallery title = title_prefix + gallery_name
+  sort_field: "date_time"   # How to sort galleries on the index page.
+                            # Possible values are: title, date_time, best_image, name
+
+  galleries:
+    my_life:
+      best_image: WechatIMG9518.jpeg
+      name: "My Life"
