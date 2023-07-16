@@ -10,14 +10,13 @@ var resizeAll = function () {
     });
 };
 gallery.querySelectorAll('img').forEach(function (item) {
-    item.classList.add('byebye');
-
-    item.addEventListener('load', function () {
+    item.addEventListener('load', async function () {
         var altura = getVal(gallery, 'grid-auto-rows');
         var gap = getVal(gallery, 'grid-row-gap');
         var gitem = item.parentElement.parentElement;
         gitem.style.gridRowEnd = "span " + Math.ceil((getHeight(gitem) + gap) / (altura + gap));
-        item.classList.remove('byebye');
+        await new Promise(r => setTimeout(r, Math.floor(Math.random() * 1000)));
+        item.style.opacity = 1;
     });
 
 });
