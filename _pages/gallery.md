@@ -2,7 +2,7 @@
 layout: page
 permalink: /gallery/
 title: Gallery
-description: My everyday life
+description: 
 nav: true
 nav_order: 1
 gallery_path: gallery/my_life
