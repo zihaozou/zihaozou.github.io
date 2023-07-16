@@ -15,7 +15,7 @@ gallery.querySelectorAll('img').forEach(function (item) {
         var gap = getVal(gallery, 'grid-row-gap');
         var gitem = item.parentElement.parentElement;
         gitem.style.gridRowEnd = "span " + Math.ceil((getHeight(gitem) + gap) / (altura + gap));
-        await new Promise(r => setTimeout(r, Math.floor(Math.random() * 1000)));
+        await new Promise(r => setTimeout(r, Math.floor(Math.random() * 1500)));
         item.style.opacity = 1;
     });
 
