@@ -1,8 +1,9 @@
 ---
 layout: cv
 permalink: /cv/
-title: cv
+cv_pdf: Zihao_Zou_CV.pdf
+title: CV
 nav: true
 nav_order: 4
-cv_pdf: Zihao_Zou_CV.pdf
+
 ---
