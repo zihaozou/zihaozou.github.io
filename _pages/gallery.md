@@ -17,4 +17,3 @@ gallery_path: gallery/my_life
         {% endif %}
     {% endfor %}
 </div>
-<script src="{{ '/assets/js/gallery.js' | relative_url }}"></script>
