@@ -16,6 +16,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+    - name: Install For Ruby
+      run: |
+        sudo apt install libmagickwand-dev
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
