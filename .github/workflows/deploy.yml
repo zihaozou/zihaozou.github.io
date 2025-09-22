@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v3
     - name: Install For Ruby
       run: |
-        sudo apt update & sudo apt install libmagickwand-dev --fix-missing
+        sudo apt update && sudo apt install libmagickwand-dev --fix-missing
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
