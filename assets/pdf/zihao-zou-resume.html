@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zihao Zou — Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Source+Sans+3:wght@400;510;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: oklch(0.955 0.004 250); /* screen backdrop */
+        --surface: oklch(1 0 0); /* paper */
+        --fg: oklch(0.22 0.012 260);
+        --muted: oklch(0.46 0.012 260);
+        --border: oklch(0.87 0.006 260);
+        --accent: oklch(0.4 0.09 250); /* deep editorial blue */
+        --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+        --font-body:
+          "Source Sans 3", -apple-system, "Helvetica Neue", Arial, sans-serif;
+        --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        background: var(--bg);
+        font-family: var(--font-body);
+        color: var(--fg);
+        font-size: 9.6pt;
+        line-height: 1.45;
+        padding: 28px 16px 48px;
+      }
+
+      .page {
+        background: var(--surface);
+        width: 215.9mm;
+        min-height: 279.4mm;
+        margin: 0 auto 28px;
+        padding: 18mm 20mm 16mm;
+        box-shadow:
+          0 1px 2px rgba(20, 24, 40, 0.08),
+          0 8px 32px rgba(20, 24, 40, 0.12);
+      }
+      .page:last-child {
+        margin-bottom: 0;
+      }
+
+      /* ---------- header ---------- */
+      .resume-header {
+        text-align: center;
+        margin-bottom: 5mm;
+      }
+      .resume-header h1 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 21pt;
+        letter-spacing: -0.01em;
+        line-height: 1.1;
+      }
+      .resume-header .name-rule {
+        width: 34mm;
+        height: 2px;
+        background: var(--accent);
+        margin: 2.4mm auto 2.8mm;
+      }
+      .contact-line {
+        font-size: 9pt;
+        color: var(--muted);
+        letter-spacing: 0.01em;
+      }
+      .contact-line a {
+        color: var(--fg);
+        text-decoration: underline;
+        text-decoration-color: var(--border);
+        text-underline-offset: 2px;
+      }
+      .contact-line a:hover {
+        color: var(--accent);
+        text-decoration-color: var(--accent);
+      }
+      .contact-line .sep {
+        margin: 0 2.2mm;
+        color: var(--border);
+      }
+
+      /* ---------- sections ---------- */
+      section {
+        margin-top: 6mm;
+      }
+      /* Sections are atomic: never split across a page break —
+         if one doesn't fit, it moves to the next page whole.
+         Publications are the exception (they may span pages). */
+      section:not([data-od-id^="publications"]) {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      /* A section title never gets stranded at a page bottom. */
+      .section-title {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+      .section-title {
+        font-family: var(--font-display);
+        font-size: 11pt;
+        font-weight: 600;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--fg);
+        display: flex;
+        align-items: baseline;
+        gap: 3mm;
+        margin-bottom: 2.4mm;
+      }
+      .section-title::after {
+        content: "";
+        flex: 1;
+        border-top: 1px solid var(--border);
+        transform: translateY(-1px);
+      }
+
+      /* ---------- generic entry rows (education / experience) ---------- */
+      .entry {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 6mm;
+        margin-bottom: 2mm;
+      }
+      .entry:last-child {
+        margin-bottom: 0;
+      }
+      .entry .entry-main {
+        min-width: 0;
+      }
+      .entry .entry-title {
+        font-weight: 600;
+        font-size: 9.5pt;
+      }
+      .entry .entry-sub {
+        color: var(--muted);
+        font-size: 9pt;
+      }
+      .entry .entry-side {
+        text-align: right;
+        flex-shrink: 0;
+        font-size: 8.5pt;
+        color: var(--muted);
+        line-height: 1.3;
+      }
+
+      /* ---------- research interests ---------- */
+      .interests p {
+        max-width: 100%;
+      }
+      .keywords {
+        margin-top: 1mm;
+        font-size: 8.5pt;
+        color: var(--muted);
+      }
+      .keywords strong {
+        color: var(--fg);
+        font-weight: 600;
+      }
+
+      /* ---------- publications ---------- */
+      .pub-list {
+        list-style: disc;
+        padding-left: 5mm;
+      }
+      .pub-list li {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        padding-left: 0.5mm;
+        margin-bottom: 3mm;
+        font-size: 9pt;
+        line-height: 1.4;
+      }
+      .pub-title {
+        font-weight: 600;
+      }
+      .pub-venue {
+        font-style: italic;
+      }
+      .pub-authors,
+      .pub-desc {
+        margin-top: 0.6mm;
+      }
+      .pub-links a {
+        color: var(--accent);
+        text-decoration: underline;
+        margin-right: 2mm;
+      }
+      @media screen and (max-width: 850px) {
+        body { padding: 64px 12px 24px; }
+        .page { width: 100%; min-height: 0; padding: 24px 20px; }
+        .entry { flex-direction: column; gap: 0; margin-bottom: 3mm; }
+        .entry .entry-side { text-align: left; }
+      }
+
+      /* ---------- continued section marker ---------- */
+      .section-continued {
+        font-family: var(--font-body);
+        font-size: 8pt;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        text-transform: none;
+        color: var(--muted);
+      }
+      .service-list {
+        list-style: none;
+      }
+      .service-list li {
+        font-size: 9pt;
+      }
+      .skills-row {
+        font-size: 9pt;
+        margin-bottom: 1mm;
+      }
+      .skills-row:last-child {
+        margin-bottom: 0;
+      }
+      .skills-row strong {
+        font-weight: 600;
+      }
+
+      /* ---------- download button (screen only) ---------- */
+      .download-btn {
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        display: inline-block;
+        font-family: var(--font-body);
+        font-size: 13px;
+        font-weight: 510;
+        letter-spacing: 0.02em;
+        color: var(--surface);
+        background: var(--accent);
+        border: none;
+        border-radius: 6px;
+        padding: 10px 18px;
+        min-height: 44px;
+        cursor: pointer;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(20, 24, 40, 0.25);
+      }
+      .download-btn:hover {
+        background: oklch(0.34 0.09 250);
+        color: var(--surface);
+      }
+      .download-btn:focus-visible {
+        outline: 2px solid var(--fg);
+        outline-offset: 2px;
+      }
+
+      /* ---------- print ---------- */
+      @page {
+        size: letter;
+        margin: 18mm 20mm 16mm;
+      }
+      @media print {
+        body {
+          background: none;
+          padding: 0;
+        }
+        .page {
+          width: auto;
+          min-height: auto;
+          margin: 0;
+          padding: 0;
+          box-shadow: none;
+        }
+        .page:not(:last-child) {
+          break-after: page;
+          page-break-after: always;
+        }
+        .download-btn {
+          display: none;
+        }
+        a {
+          text-decoration: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a
+      class="download-btn"
+      href="CV.pdf"
+      download="Zihao-Zou-Resume.pdf"
+      data-od-id="download-pdf-button"
+    >
+      Download PDF
+    </a>
+
+    <div class="page" data-od-id="resume-page-1">
+      <!-- ================= Header ================= -->
+      <header class="resume-header" data-od-id="header">
+        <h1>Zihao Zou</h1>
+        <div class="name-rule"></div>
+        <div class="contact-line">
+          Tel: 314-465-5845<span class="sep">·</span
+          ><a href="mailto:zihaozou@unc.edu">zihaozou@unc.edu</a
+          ><span class="sep">·</span
+          ><a href="https://zihaozou.github.io/">zihaozou.github.io</a
+          ><span class="sep">·</span
+          ><a
+            href="https://scholar.google.com/citations?user=g7UmvMEAAAAJ&amp;hl=en"
+            >Google Scholar</a
+          >
+        </div>
+      </header>
+
+      <!-- ================= Education ================= -->
+      <section data-od-id="education">
+        <h2 class="section-title">Education</h2>
+
+        <div class="entry" data-od-id="edu-unc">
+          <div class="entry-main">
+            <span class="entry-title"
+              >University of North Carolina, Chapel Hill</span
+            ><span class="entry-sub">
+              — Ph.D. student, Department of Computer Science</span
+            >
+          </div>
+          <div class="entry-side">2024 – Present · Chapel Hill, NC</div>
+        </div>
+
+        <div class="entry" data-od-id="edu-wustl">
+          <div class="entry-main">
+            <span class="entry-title">Washington University in St. Louis</span
+            ><span class="entry-sub">
+              — M.S. in Computer Science, McKelvey School of Engineering</span
+            >
+          </div>
+          <div class="entry-side">2021 – 2022 · St. Louis, MO</div>
+        </div>
+
+        <div class="entry" data-od-id="edu-uci">
+          <div class="entry-main">
+            <span class="entry-title">University of California, Irvine</span
+            ><span class="entry-sub">
+              — B.S. in Computer Engineering, College of Engineering</span
+            >
+          </div>
+          <div class="entry-side">2016 – 2020 · Irvine, CA</div>
+        </div>
+      </section>
+
+      <!-- ================= Research Interests ================= -->
+      <section class="interests" data-od-id="research-interests">
+        <h2 class="section-title">Research Interests</h2>
+        <p>
+          My research focuses on developing robust and efficient frameworks for
+          computational photography and scientific imaging with GenAI. In
+          particular, I work on high-speed, high-quality 3D imaging through
+          multi-modal sensor fusion and optics design.
+          I also have broad interests in imaging inverse
+          problems, generative AI, and metalens design.
+        </p>
+        <p class="keywords">
+          <strong>Keywords:</strong> Computer Vision, Computational Imaging,
+          Large-scale Optimization, Machine Learning, Event Camera, TOF Camera,
+          Camera Fusion, Diffusion Models for Imaging, Metalens Design.
+        </p>
+      </section>
+
+      <!-- ================= Publications ================= -->
+      <section data-od-id="publications">
+        <h2 class="section-title">Publications</h2>
+        <ul class="pub-list">
+          <li data-od-id="pub-1">
+            <span class="pub-title">Asynchronous Multimodal View Synthesis with Probabilistic Temporal Encoding.</span>
+            <span class="pub-venue">SIGGRAPH Asia 2026.</span>
+            <div class="pub-authors"><strong>Z. Zou</strong>, J. Liu, H. Lian, N. Thadishetty, P. Chakravarthula.</div>
+            <div class="pub-links"><a href="https://zihaozou.github.io/ProbRoPE/">Project</a> <a href="https://zihaozou.github.io/ProbRoPE/assets/siggraph-camauthor.pdf">Paper</a></div>
+          </li>
+
+          <li data-od-id="pub-2">
+            <span class="pub-title">Why Slow Feels Fast and Fast Feels Slow: Evaluating and Predicting Speed Misperception.</span>
+            <span class="pub-venue">ISMAR 2025.</span>
+            <div class="pub-authors">X. Peng, C. Groth, D. Jimenez Navarro, <strong>Z. Zou</strong>, Y. Zhu, A. Serrano, K. Myszkowski, Q. Sun, P. Chakravarthula.</div>
+          </li>
+
+          <li data-od-id="pub-3">
+            <span class="pub-title">Implicit and Explicit Volumetric Representations for Sensor Fusion.</span>
+            <span class="pub-venue">Asilomar 2025.</span>
+            <div class="pub-authors"><strong>Z. Zou</strong>, Z. Qu, S. Jayasuriya, A. Pediredla, P. Chakravarthula.</div>
+          </li>
+
+          <li data-od-id="pub-4">
+            <span class="pub-title">High-Speed Dynamic 3D Imaging with Sensor Fusion Splatting.</span>
+            <span class="pub-venue">Transactions on Graphics · <span class="pub-status">Under Review</span>.</span>
+            <div class="pub-authors"><strong>Z. Zou</strong>, Z. Qu, V. Boominathan, A. Pediredla, P. Chakravarthula.</div>
+            <p class="pub-desc">Fuse RGB, depth, and event cameras together under a unified framework, enabling high-speed and small-baseline 3D/4D imaging and inverse rendering.</p>
+            <div class="pub-links"><a href="https://arxiv.org/abs/2502.04630">Preprint</a></div>
+          </li>
+
+          <li data-od-id="pub-5">
+            <span class="pub-title">Event Fields: Capturing Light Fields at High Speed, Resolution, and Dynamic Range.</span>
+            <span class="pub-venue">CVPR 2025 · <span class="pub-status">Highlight</span>.</span>
+            <div class="pub-authors">Z. Qu, <strong>Z. Zou</strong>, V. Boominathan, P. Chakravarthula, A. Pediredla.</div>
+            <p class="pub-desc">Combined RGB camera and event camera with special optical designs, enabling high-speed, high-resolution, and high-dynamic-range light-field imaging.</p>
+            <div class="pub-links"><a href="https://arxiv.org/abs/2412.06191">Paper</a></div>
+          </li>
+
+          <li data-od-id="pub-6">
+            <span class="pub-title">FLAIR: A Conditional Diffusion Framework with Applications to Face Video Restoration.</span>
+            <span class="pub-venue">WACV 2025.</span>
+            <div class="pub-authors"><strong>Z. Zou</strong>, J. Liu, S. Shoushtari, Y. Wang, U. S. Kamilov.</div>
+            <p class="pub-desc">Explored physical model-based video diffusion models for imaging inverse problems, such as denoising, deblurring, and spatial-temporal interpolation, with applications to face video restoration.</p>
+            <div class="pub-links"><a href="https://wustl-cig.github.io/flairwww/">Website</a> <a href="https://arxiv.org/abs/2311.15445">Paper</a></div>
+          </li>
+
+          <li data-od-id="pub-7">
+            <span class="pub-title">Efficient Model-Based Deep Learning via Network Pruning and Fine-Tuning.</span>
+            <span class="pub-venue">Journal of Mathematical Imaging and Vision.</span>
+            <div class="pub-authors">C. Park, W. Gan, <strong>Z. Zou</strong>, Y. Hu, Z. Sun, and U. S. Kamilov.</div>
+            <div class="pub-links"><a href="https://arxiv.org/abs/2311.02003">Paper</a></div>
+          </li>
+
+          <li data-od-id="pub-8">
+            <span class="pub-title">Deep Equilibrium Learning of Explicit Regularization Functionals for Imaging Inverse Problems.</span>
+            <span class="pub-venue">IEEE Open Journal of Signal Processing.</span>
+            <div class="pub-authors"><strong>Z. Zou</strong>, J. Liu, B. Wohlberg and U. S. Kamilov.</div>
+            <p class="pub-desc">Proposed &ldquo;ELDER&rdquo;, a deep equilibrium regularizer that learns explicit regularization functionals, combining the effectiveness of deep learning with the convergence guarantees of optimization theory.</p>
+            <div class="pub-links"><a href="https://wustl-cig.github.io/elderwww/">Website</a> <a href="https://ieeexplore.ieee.org/document/10184493">Paper</a></div>
+          </li>
+
+          <li data-od-id="pub-9">
+            <span class="pub-title">Robustness of Deep Equilibrium Architectures to Changes in the Measurement Model.</span>
+            <span class="pub-venue">ICASSP 2023.</span>
+            <div class="pub-authors">J. Hu, S. Shoushtari, <strong>Z. Zou</strong>, J. Liu, Z. Sun and U. S. Kamilov.</div>
+            <p class="pub-desc">Investigated the robustness of deep equilibrium models for imaging inverse problems under physical model changes.</p>
+            <div class="pub-links"><a href="https://ieeexplore.ieee.org/abstract/document/10096199" >Paper</a ></div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ================= Experience ================= -->
+      <section data-od-id="experience">
+        <h2 class="section-title">Experience</h2>
+
+        <div class="entry" data-od-id="exp-unc">
+          <div class="entry-main">
+            <span class="entry-title">PhD Student</span>,
+            <span class="entry-sub"
+              >University of North Carolina, Chapel Hill</span
+            >
+          </div>
+          <div class="entry-side">2024 – Present · Chapel Hill, NC</div>
+        </div>
+
+        <div class="entry" data-od-id="exp-wustl-ra">
+          <div class="entry-main">
+            <span class="entry-title">Research Assistant</span>,
+            <span class="entry-sub">Washington University in St. Louis</span>
+          </div>
+          <div class="entry-side">2023 – 2023 · St. Louis, MO</div>
+        </div>
+
+        <div class="entry" data-od-id="exp-wustl-ta">
+          <div class="entry-main">
+            <span class="entry-title">Teaching Assistant</span>,
+            <span class="entry-sub">Washington University in St. Louis</span>
+          </div>
+          <div class="entry-side">2023 – 2023 · St. Louis, MO</div>
+        </div>
+
+        <div class="entry" data-od-id="exp-techphant">
+          <div class="entry-main">
+            <span class="entry-title">Embedded System Engineer</span>,
+            <span class="entry-sub">Techphant. Inc</span>
+          </div>
+          <div class="entry-side">2020 – 2021 · Guangzhou, China</div>
+        </div>
+      </section>
+
+      <!-- ================= Academic Service ================= -->
+      <section data-od-id="academic-service">
+        <h2 class="section-title">Academic Service</h2>
+        <ul class="service-list">
+          <li>
+            Reviewer, ISMAR 2025 (IEEE International Symposium on Mixed and
+            Augmented Reality)
+          </li>
+        </ul>
+      </section>
+
+      <!-- ================= Skills ================= -->
+      <section data-od-id="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-row">
+          <strong>Languages:</strong> Chinese (Native), English
+        </div>
+        <div class="skills-row">
+          <strong>Technical:</strong> Python, C/C++/CUDA, Blender (renderer)
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

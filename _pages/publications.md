@@ -2,8 +2,8 @@
 layout: page
 permalink: /publications/
 title: Publications
-description: Zihao's publication
-years: [2025, 2024, 2023]
+description: Publications and preprints
+years: [2026, 2025, 2023]
 nav: true
 nav_order: 1
 ---
