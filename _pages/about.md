@@ -18,4 +18,4 @@ Hello! I'm Zihao, a third-year Ph.D. student in Computer Science at the Universi
 
 My research focuses on computational photography and scientific imaging with generative AI. I work on high-speed, high-quality 3D imaging through multi-modal sensor fusion and optics design.
 
-**I'm looking for research internships for Summer 2027.** Please [get in touch](mailto:zihaozou@unc.edu) if you have an opportunity in computational imaging, computer vision, or generative AI.
+**I'm looking for research internships for Summer 2027.** Please [get in touch](mailto:zihaozou@cs.unc.edu) if you have an opportunity in computational imaging, computer vision, or generative AI.
